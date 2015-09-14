@@ -14,7 +14,7 @@ Clone the repository
 
 Install the necessary modules via [librarian-puppet](https://github.com/rodjek/librarian-puppet)
 
-    cd vagrant-elk
+    cd vagrant-kibanana
     librarian-puppet install --path=puppet/modules/
 
 Spin up the environment
