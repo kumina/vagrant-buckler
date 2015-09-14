@@ -7,7 +7,7 @@ VAGRANTFILE_API_VERSION = "2"
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Set box
-  config.vm.box = "debian-8.2.0-64bit-vbox-4.3.18-puppet-2.7.26"
+  config.vm.box = "debian-8.2.0-64bit-vbox-4.3.18-docker"
 
   # Set box memory to 1024
   config.vm.provider :virtualbox do |vb|
