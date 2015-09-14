@@ -63,7 +63,7 @@ class webserver {
   # Install logstash.
   package{ 'logstash':
     ensure  => present,
-    require => [Package['openjdk-7-jre'], Apt::Source['logstash']]
+    require => [Package['openjdk-8-jre'], Apt::Source['logstash']]
   }
 
 ## Kibanana
