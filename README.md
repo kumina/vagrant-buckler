@@ -10,7 +10,7 @@ Installation
 
 Clone the repository 
 
-    git clone git@git.kumina.nl:adrian/vagrant-kibanana.git
+    git clone git@git.kumina.nl:kibanana/vagrant-kibanana.git
 
 Install the necessary modules via [librarian-puppet](https://github.com/rodjek/librarian-puppet)
 
