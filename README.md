@@ -39,20 +39,20 @@ When you first start the environment you must build the docker images:
 
 After that you can start the docker instances: 
 
-  sudo fig up -d
+    sudo fig up -d
 
 Next you will need to generate some log files to import into elasticsearch. 
 
-  cd ../../logs
-  timeout 150 ./genhttplogs.rb > customera_access.log
-  timeout 150 ./genhttplogs.rb > customerb_access.log
-  timeout 150 ./genhttplogs.rb > customerc_access.log
+    cd ../../logs
+    timeout 150 ./genhttplogs.rb > customera_access.log
+    timeout 150 ./genhttplogs.rb > customerb_access.log
+    timeout 150 ./genhttplogs.rb > customerc_access.log
 
 Once the log files have been generated you can import them from 
 
-  /opt/logstash/bin/logstash agent -f /vagrant/logstash/customera_logstash.conf < /vagrant/logs/customera_access.log
-  /opt/logstash/bin/logstash agent -f /vagrant/logstash/customerb_logstash.conf < /vagrant/logs/customerb_access.log
-  /opt/logstash/bin/logstash agent -f /vagrant/logstash/customerc_logstash.conf < /vagrant/logs/customerc_access.log
+    /opt/logstash/bin/logstash agent -f /vagrant/logstash/customera_logstash.conf < /vagrant/logs/customera_access.log
+    /opt/logstash/bin/logstash agent -f /vagrant/logstash/customerb_logstash.conf < /vagrant/logs/customerb_access.log
+    /opt/logstash/bin/logstash agent -f /vagrant/logstash/customerc_logstash.conf < /vagrant/logs/customerc_access.log
 
 You now have a working ELK stack.
 
@@ -61,16 +61,16 @@ URLS
 
 **KOPF**
 
-  http://kibana.vagrant.local:9200/_plugin/kopf/#!/cluster
+    http://kibana.vagrant.local:9200/_plugin/kopf/
 
 **Kibana**
 
-  http://kibana.vagrant.local:5601
+    http://kibana.vagrant.local:5601
 
 Todo
 ------
 
-Add documentation for kibanana
+- Add documentation for kibanana
 
 Author
 ------
