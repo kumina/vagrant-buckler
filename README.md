@@ -43,7 +43,7 @@ After that you can start the docker instances:
 
 Next you will need to generate some log files to import into elasticsearch. 
 
-    cd ../../logs
+    cd ../logs
     timeout 150 ./genhttplogs.rb > customera_access.log
     timeout 150 ./genhttplogs.rb > customerb_access.log
     timeout 150 ./genhttplogs.rb > customerc_access.log
