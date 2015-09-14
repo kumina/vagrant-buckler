@@ -1,0 +1,29 @@
+# Guard-shell configuration for auto lint/syntax checking of saved puppet 
+# files and templates.
+# Requires:
+# 'gem install guard guard-shell puppet'
+notification :off
+interactor :off
+
+guard :shell do
+
+  # Watch puppet files
+  watch /.*\.pp$/ do |m|
+
+    system("echo Checking: #{m[0]}\n" )
+
+    system("echo '[SYNTAX]'")
+    system("puppet parser validate '#{m[0]}'")
+    system("echo '[LINT]'")
+    system("puppet-lint --with-filename --no-autoloader_layout-check --no-80chars-check '#{m[0]}'")
+  end
+
+  # Watch puppet templates
+  watch /.*\.erb$/ do |m|
+
+    system("echo Checking: #{m[0]}\n" )
+    system("erb -x -T - #{m} | ruby -c")
+
+  end
+
+end

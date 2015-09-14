@@ -1,0 +1,11 @@
+# Scale up elasticsearch nodes (not needed perse)
+sudo fig scale esNode=3 
+
+# Get cluster status
+sudo curl -XGET 'http://localhost:9200/_cluster/state?pretty'
+
+# Get all indexes
+curl -XGET 'http://localhost:9200/_all?pretty
+
+# Get info on specific index
+curl -XGET 'http://localhost:9200/<index_name>/?pretty'
