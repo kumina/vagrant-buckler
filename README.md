@@ -61,11 +61,11 @@ URLS
 
 **KOPF**
 
-    http://kibana.vagrant.local:9200/_plugin/kopf/
+    http://kibanana.vagrant.local:9200/_plugin/kopf/
 
 **Kibana**
 
-    http://kibana.vagrant.local:5601
+    http://kibanana.vagrant.local:5601
 
 Todo
 ------
