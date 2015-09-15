@@ -25,36 +25,22 @@ Add the following lines to your hosts file:
 
     127.0.0.1 kibanana.vagrant.local
 
-If everything went as planned you should be able to reach the ticking systems with 
-the information supplied below.
+If everything went as planned you should be able to login to the vagrant machine.
+
+    vagrant ssh
 
 Usage
 -----
 
-When the vagrant environment is running you can login to the webserver with vagrant.
-
-    vagrant ssh
-
-Next spin up the docker instances. If this is the first run this might take a while
-because the docker images need to be build first.
+Once you're logged in you will need to setup the test environment. This will start the ELK environment,
+generate access logs and import them to elasticsearch. 
 
     cd /vagrant/
-    sudo docker-compose up -d
+    rake setup_env_test
 
-Next you will need to generate some log files to import into elasticsearch. 
+You now have a working ELK stack. For more rake tasks execute rake
 
-    cd ../logs
-    timeout 150 ./genhttplogs.rb > customera_access.log
-    timeout 150 ./genhttplogs.rb > customerb_access.log
-    timeout 150 ./genhttplogs.rb > customerc_access.log
-
-Once the log files have been generated you can import them from 
-
-    /opt/logstash/bin/logstash agent -f /vagrant/logstash/customera_logstash.conf < /vagrant/logs/customera_access.log
-    /opt/logstash/bin/logstash agent -f /vagrant/logstash/customerb_logstash.conf < /vagrant/logs/customerb_access.log
-    /opt/logstash/bin/logstash agent -f /vagrant/logstash/customerc_logstash.conf < /vagrant/logs/customerc_access.log
-
-You now have a working ELK stack.
+    rake
 
 URLS
 ----
@@ -66,6 +52,10 @@ URLS
 **Kibana**
 
     http://kibanana.vagrant.local:5601
+
+**Kibanana**
+
+    http://kibanana.vagrant.local:8000
 
 Todo
 ------

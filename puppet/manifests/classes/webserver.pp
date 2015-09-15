@@ -74,4 +74,10 @@ class webserver {
     ensure => present,
   }
 
+## Rake
+
+  # Install Rake
+  package { 'rake':
+    ensure   => 'present',
+  }
 }
