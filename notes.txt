@@ -1,11 +1,31 @@
-# Scale up elasticsearch nodes (not needed perse)
-sudo fig scale esNode=3 
+## Docker
+
+# Start ELK cluster
+
+  sudo docker-compose -f /vagrant/docker-compose.yml up -d
+
+# Stop ELK cluster
+
+  sudo docker-compose -f /vagrant/docker-compose.yml stop
+
+# Restart ELK cluster
+
+  sudo docker-compose -f /vagrant/docker-compose.yml restart
+
+## ELK Cluster
+
+# Scale up elasticsearch nodes
+
+  sudo docker-compose scale esnode=2
 
 # Get cluster status
-sudo curl -XGET 'http://localhost:9200/_cluster/state?pretty'
+
+  curl -XGET 'http://localhost:9200/_cluster/state?pretty'
 
 # Get all indexes
-curl -XGET 'http://localhost:9200/_all?pretty
+
+  curl -XGET 'http://localhost:9200/_all?pretty'
 
 # Get info on specific index
-curl -XGET 'http://localhost:9200/<index_name>/?pretty'
+
+  curl -XGET 'http://localhost:9200/<index_name>/?pretty'
