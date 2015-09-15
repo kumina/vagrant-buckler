@@ -31,15 +31,15 @@ the information supplied below.
 Usage
 -----
 
-When you first start the environment you must build the docker images:
+When the vagrant environment is running you can login to the webserver with vagrant.
 
-    cd /vagrant/docker/
-    sudo docker build --no-cache -t="kumina/elasticsearch" elasticsearch/
-    sudo docker build --no-cache -t="kumina/kibana4" kibana4/
+    vagrant ssh
 
-After that you can start the docker instances: 
+Next spin up the docker instances. If this is the first run this might take a while
+because the docker images need to be build first.
 
-    sudo fig up -d
+    cd /vagrant/
+    sudo docker-compose up -d
 
 Next you will need to generate some log files to import into elasticsearch. 
 

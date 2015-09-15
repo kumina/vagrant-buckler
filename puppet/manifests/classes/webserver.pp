@@ -21,10 +21,10 @@
 #
 class webserver {
 
-## Fig
-
-  # Fig for docker control.
-  include 'fig'
+## Docker compose
+  class { 'docker_compose':
+    version => '1.2.0'
+  }
 
 ## Elasticdump
 

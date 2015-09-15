@@ -1,17 +1,17 @@
-esNode:
-  image: kumina/elasticsearch
+esnode:
+  build: docker/elasticsearch/
   environment:
     - NETWORK_PUBLISH_HOST
-esGateway:
-  image: kumina/elasticsearch
+esgateway:
+  build: docker/elasticsearch/
   environment:
     - NETWORK_PUBLISH_HOST
   ports:
     - '9200:9200'
     - '9300:9300'
-kibana:
-  image: kumina/kibana4
+kibana4:
+  build: docker/kibana4/
   ports:
     - '5601:5601'
   links:
-    - esGateway
+    - esgateway
