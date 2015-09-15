@@ -8,6 +8,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Set box
   config.vm.box = "debian-8.2.0-64bit-vbox-4.3.18-docker"
+  config.vm.box_url = "http://vagrant.kumina.nl/boxes/debian-8.2.0-64bit-vbox-4.3.18-docker.box"
 
   # Set box memory to 1024
   config.vm.provider :virtualbox do |vb|
