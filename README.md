@@ -29,7 +29,7 @@ If everything went as planned you should be able to login to the vagrant machine
 
     vagrant ssh
 
-Usage
+Setup
 -----
 
 Once you're logged in you will need to setup the test environment. This will start the ELK environment,
@@ -41,6 +41,36 @@ generate access logs and import them to elasticsearch.
 You now have a working ELK stack. For more rake tasks execute rake
 
     rake
+
+Kibanana
+--------
+
+You can now setup the kibanana development environment. Note: you will be asked for your credentials.
+
+    cd src/
+    git clone https://git.kumina.nl/kibanana/kibanana-project.git
+    virtualenv --system-site-packages kibanana-project
+
+Because you have no access to your ssh keys from this environment we need to change the connection method
+from git to https.
+
+    sed -i 's/git@git.kumina.nl:/https:\/\/git.kumina.nl\//' kibanana-project/buildout.cfg
+
+Now install zc.buildout and run buildout. Note: you will be asked for your credentials.
+
+    cd kibanana-project && bin/pip install zc.buildout && bin/buildout -c development.cfg
+
+Copy the configuration file.
+
+    cp /vagrant/kibanana_config.py Kibanana/settings/config.py
+
+And start the kibanana instance.
+
+    bin/django runserver 0.0.0.0:8000
+
+You can now start testing Kibanana. The credentials are in the configuration file.
+
+    /vagrant/src/kibanana-project/Kibanana/settings/config.py
 
 URLS
 ----
@@ -57,11 +87,6 @@ URLS
 
     http://kibanana.vagrant.local:8000
 
-Todo
-------
-
-- Add documentation for kibanana
-
 Author
 ------
 
@@ -71,7 +96,7 @@ License
 -------
 
     Author:: Adrian van Dongen (adrian@kumina.nl)
-    Copyright:: Copyright (c) 2015 Adrian van Dongen
+    Copyright:: Copyright (c) 2015 Kumina B.V.
     License:: Apache License, Version 2.0
 
     Licensed under the Apache License, Version 2.0 (the "License");
