@@ -47,7 +47,7 @@ Kibanana
 
 You can now setup the kibanana development environment. Note: you will be asked for your credentials.
 
-    cd src/
+    mkdir src && cd src/
     git clone https://git.kumina.nl/kibanana/kibanana-project.git
     virtualenv --system-site-packages kibanana-project
 
