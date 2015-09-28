@@ -25,16 +25,16 @@ end
 
 desc 'Generate and import indexes'
 task :indexes_generate do
-  system "LOGS=`timeout 15 /vagrant/logs/genhttplogs.rb` echo $LOGS | /opt/logstash/bin/logstash agent -f /vagrant/logs/customera_logstash.conf"
-  system "LOGS=`timeout 15 /vagrant/logs/genhttplogs.rb` echo $LOGS | /opt/logstash/bin/logstash agent -f /vagrant/logs/customerb_logstash.conf"
-  system "LOGS=`timeout 15 /vagrant/logs/genhttplogs.rb` echo $LOGS | /opt/logstash/bin/logstash agent -f /vagrant/logs/customerc_logstash.conf"
+  system 'makelogs -c 1500 -d "0,-12" -localhost:9200 --indexPrefix customera- --verbose'
+  system 'makelogs -c 1500 -d "0,-12" -localhost:9200 --indexPrefix customerb- --verbose'
+  system 'makelogs -c 1500 -d "0,-12" -localhost:9200 --indexPrefix customerc- --verbose'
 end
 
 desc 'Purge indexes'
 task :indexes_purge do
-    system "curl -XDELETE 'http://localhost:9200/customera-2015.09.15/'"
-    system "curl -XDELETE 'http://localhost:9200/customerb-2015.09.15/'"
-    system "curl -XDELETE 'http://localhost:9200/customerc-2015.09.15/'"
+    system "curl -XDELETE 'http://localhost:9200/customera-*/'"
+    system "curl -XDELETE 'http://localhost:9200/customerb-*/'"
+    system "curl -XDELETE 'http://localhost:9200/customerc-*/'"
 end
 
 desc 'List indexes'

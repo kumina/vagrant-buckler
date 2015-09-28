@@ -35,35 +35,23 @@ class webserver {
     npm_package_ensure        => 'present',
   }
 
+  file { '/usr/bin/node':
+    ensure => link,
+    target => '/usr/bin/nodejs',
+  }
+
   # Install elasticdump
   package { 'elasticdump':
     ensure   => 'present',
     provider => 'npm',
-    require  => Class['::nodejs']
+    require  => [ Class['::nodejs'], File['/usr/bin/node'], ]
   }
 
-## Logstash
-
-  # Add logstash repo.
-  apt::source { 'logstash':
-    location => 'http://packages.elasticsearch.org/logstash/1.5/debian',
-    release  => 'stable',
-    repos    => 'main',
-    key        => {
-      'id'     => '46095ACC8548582C1A2699A9D27D666CD88E42B4',
-      'server' => 'pgp.mit.edu',
-    },
-  }
-
-  # Install java/OpenJDK for logstash.
-  package{ 'openjdk-7-jre':
-    ensure => present,
-  }
-
-  # Install logstash.
-  package{ 'logstash':
-    ensure  => present,
-    require => [Package['openjdk-7-jre'], Apt::Source['logstash'], Class['apt::update']]
+  # Install makelogs
+  package { 'makelogs':
+    ensure   => 'present',
+    provider => 'npm',
+    require  => [ Class['::nodejs'], File['/usr/bin/node'], ]
   }
 
 ## Kibanana
