@@ -32,45 +32,24 @@ If everything went as planned you should be able to login to the vagrant machine
 Setup
 -----
 
-Once you're logged in you will need to setup the test environment. This will start the ELK environment,
-generate access logs and import them to elasticsearch. 
+Once you're logged in you will need to setup the test environment.
 
     cd /vagrant/
-    rake setup_env_test
+    rake setupenv
 
-You now have a working ELK stack. For more rake tasks execute rake
+Which will execute the following steps:
+
+* Build and start the ELK environment.
+* Generate and import access logs.
+* Build and start Kibanana (in the background).
+
+You now have a working test environment. Credentials for kibanana can be found in the configuration file.
+
+    kibanana_config.py
+
+To list all rake tasks for managing your environment execute rake without additional options.
 
     rake
-
-Kibanana
---------
-
-You can now setup the kibanana development environment. Note: you will be asked for your credentials.
-
-    mkdir src && cd src/
-    git clone https://git.kumina.nl/kibanana/kibanana-project.git
-    virtualenv --system-site-packages kibanana-project
-
-Because you have no access to your ssh keys from this environment we need to change the connection method
-from git to https.
-
-    sed -i 's/git@git.kumina.nl:/https:\/\/git.kumina.nl\//' kibanana-project/buildout.cfg
-
-Now install zc.buildout and run buildout. Note: you will be asked for your credentials.
-
-    cd kibanana-project && bin/pip install zc.buildout && bin/buildout -c development.cfg
-
-Copy the configuration file.
-
-    cp /vagrant/kibanana_config.py Kibanana/settings/config.py
-
-And start the kibanana instance.
-
-    bin/django runserver 0.0.0.0:8000
-
-You can now start testing Kibanana. The credentials are in the configuration file.
-
-    /vagrant/src/kibanana-project/Kibanana/settings/config.py
 
 URLS
 ----
