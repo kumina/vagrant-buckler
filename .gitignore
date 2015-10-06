@@ -3,5 +3,5 @@
 Puppetfile.lock
 puppet/modules/
 .vagrant/
-src/
 *.swp
+.rake_tasks~
