@@ -68,4 +68,11 @@ class webserver {
   package { 'rake':
     ensure   => 'present',
   }
+
+## Curator
+
+  # Install Curator
+  python::pip { 'elasticsearch-curator' :
+    pkgname       => 'elasticsearch-curator',
+  }
 }
