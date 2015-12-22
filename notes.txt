@@ -40,31 +40,31 @@
   # Open all indexes older than 10 days
   curator --host localhost open indices --timestring %Y.%m.%d --time-unit days --older-than 10
 
-## Kibanana build
+## Buckler build
 
-You can now setup the kibanana development environment. Note: you will be asked for your credentials.
+You can now setup the Buckler development environment. Note: you will be asked for your credentials.
 
     mkdir src && cd src/
-    git clone https://git.kumina.nl/kibanana/kibanana-project.git
-    virtualenv --system-site-packages kibanana-project
+    git clone https://git.kumina.nl/buckler/buckler-project.git
+    virtualenv --system-site-packages buckler-project
 
 Because you have no access to your ssh keys from this environment we need to change the connection method
 from git to https.
 
-    sed -i 's/git@git.kumina.nl:/https:\/\/git.kumina.nl\//' kibanana-project/buildout.cfg
+    sed -i 's/git@git.kumina.nl:/https:\/\/git.kumina.nl\//' buckler-project/buildout.cfg
 
 Now install zc.buildout and run buildout. Note: you will be asked for your credentials.
 
-    cd kibanana-project && bin/pip install zc.buildout && bin/buildout -c development.cfg
+    cd buckler-project && bin/pip install zc.buildout && bin/buildout -c development.cfg
 
 Copy the configuration file.
 
-    cp /vagrant/kibanana_config.py Kibanana/settings/config.py
+    cp /vagrant/buckler_config.py Buckler/settings/config.py
 
-And start the kibanana instance.
+And start the buckler instance.
 
     bin/django runserver 0.0.0.0:8000
 
-You can now start testing Kibanana. The credentials are in the configuration file.
+You can now start testing Buckler. The credentials are in the configuration file.
 
-    /vagrant/src/kibanana-project/Kibanana/settings/config.py
+    /vagrant/src/buckler-project/Buckler/settings/config.py

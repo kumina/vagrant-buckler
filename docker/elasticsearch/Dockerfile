@@ -1,4 +1,4 @@
-FROM elasticsearch
+FROM elasticsearch:1.7.4
 MAINTAINER Adrian van Dongen adrian@kumina.nl
 
 ENV REFRESHED_AT 2015-09-12

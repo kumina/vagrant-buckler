@@ -63,23 +63,23 @@ namespace :indexes do
   end
 end
 
-namespace :kibanana do
+namespace :buckler do
 
-  desc 'Build kibanana'
+  desc 'Build buckler'
   task :build do
-    system "git clone https://git.kumina.nl/kibanana/kibanana-project.git src/kibanana-project"
-    system "virtualenv --system-site-packages src/kibanana-project/"
-    system "sed -i 's\/git@git.kumina.nl:\/https:\\/\\/git.kumina.nl\\/\/' src/kibanana-project/buildout.cfg"
-    system "src/kibanana-project/bin/pip install zc.buildout && src/kibanana-project/bin/buildout -c src/kibanana-project/development.cfg"
-    system "cp /vagrant/kibanana_config.py src/kibanana-project/Kibanana/settings/config.py"
+    system "git clone https://git.kumina.nl/buckler/buckler-project.git src/buckler-project"
+    system "virtualenv --system-site-packages src/buckler-project/"
+    system "sed -i 's\/git@git.kumina.nl:\/https:\\/\\/git.kumina.nl\\/\/' src/buckler-project/buildout.cfg"
+    system "src/buckler-project/bin/pip install zc.buildout && src/buckler-project/bin/buildout -c src/buckler-project/development.cfg"
+    system "cp /vagrant/buckler_config.py src/buckler-project/Buckler/settings/config.py"
   end
 
-  desc 'Start kibanana'
+  desc 'Start buckler'
   task :start do
-    system "src/kibanana-project/bin/django runserver 0.0.0.0:8000 > src/kibanana_output.log 2>&1 &"
+    system "src/buckler-project/bin/django runserver 0.0.0.0:8000 > src/buckler_output.log 2>&1 &"
   end
 
-  desc 'Stop kibanana'
+  desc 'Stop buckler'
   task :stop do
     system "ps aux | grep django | grep -v grep | awk {'print $2'} | xargs kill"
   end
@@ -93,4 +93,4 @@ task :usage do
 end
 
 desc 'Setup test environment'
-task :setupenv => [ 'docker:start', 'indexes:generate', 'kibanana:build', 'kibanana:start']
+task :setupenv => [ 'docker:start', 'indexes:generate', 'buckler:build', 'buckler:start']

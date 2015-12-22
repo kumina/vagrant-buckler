@@ -54,11 +54,11 @@ class webserver {
     require  => [ Class['::nodejs'], File['/usr/bin/node'], ]
   }
 
-## Kibanana
+## Buckler
 
-  # Kibanana dependencies 
-  $kibanana_dep_pkgs = ['python-pip', 'python-virtualenv']
-  package{ $kibanana_dep_pkgs:
+  # Buckler dependencies 
+  $buckler_dep_pkgs = ['python-pip', 'python-virtualenv']
+  package{ $buckler_dep_pkgs:
     ensure => present,
   }
 

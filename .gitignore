@@ -5,3 +5,4 @@ puppet/modules/
 .vagrant/
 *.swp
 .rake_tasks~
+src/

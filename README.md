@@ -1,20 +1,20 @@
-Vagrant: Kibanana
+Vagrant: Buckler
 ================
 
 Description
 -----------
-This is an vagrant environment to test Kibanana
+This is an vagrant environment to test Buckler
 
 Installation
 ------------
 
 Clone the repository 
 
-    git clone git@git.kumina.nl:kibanana/vagrant-kibanana.git
+    git clone git@git.kumina.nl:buckler/vagrant-buckler.git
 
 Install the necessary modules via [librarian-puppet](https://github.com/rodjek/librarian-puppet)
 
-    cd vagrant-kibanana
+    cd vagrant-buckler
     librarian-puppet install --path=puppet/modules/
 
 Spin up the environment
@@ -23,7 +23,7 @@ Spin up the environment
 
 Add the following lines to your hosts file:
 
-    127.0.0.1 kibanana.vagrant.local
+    127.0.0.1 buckler.vagrant.local
 
 If everything went as planned you should be able to login to the vagrant machine.
 
@@ -41,11 +41,11 @@ Which will execute the following steps:
 
 * Build and start the ELK environment.
 * Generate and import access logs.
-* Build and start Kibanana (in the background).
+* Build and start Buckler (in the background).
 
-You now have a working test environment. Credentials for kibanana can be found in the configuration file.
+You now have a working test environment. Credentials for buckler can be found in the configuration file.
 
-    kibanana_config.py
+    buckler_config.py
 
 To list all rake tasks for managing your environment execute rake without additional options.
 
@@ -56,15 +56,15 @@ URLS
 
 **KOPF**
 
-    http://kibanana.vagrant.local:9200/_plugin/kopf/
+    http://buckler.vagrant.local:9200/_plugin/kopf/
 
 **Kibana**
 
-    http://kibanana.vagrant.local:5601
+    http://buckler.vagrant.local:5601
 
-**Kibanana**
+**Buckler**
 
-    http://kibanana.vagrant.local:8000
+    http://buckler.vagrant.local:8000
 
 Author
 ------
