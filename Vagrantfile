@@ -16,7 +16,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   # Always run apt-get update
-  config.vm.provision "shell", inline: "apt-get update"
+  config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
+  config.vm.provision "shell", inline: "export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get -y --force-yes dist-upgrade"
 
   # Puppet provisioning
   config.vm.provision :puppet,
