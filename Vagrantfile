@@ -5,6 +5,10 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  # Cache the debs so we can reduce network transfer.
+  if Vagrant.has_plugin?("vagrant-cachier")
+    config.cache.scope = :box
+  end
 
   # Set box
   config.vm.box = "debian-8.2.0-64bit-vbox-4.3.18-docker"
