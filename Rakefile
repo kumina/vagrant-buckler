@@ -25,6 +25,13 @@ namespace :indexes do
     system 'makelogs -c 1500 -d "0,-12" -localhost:9200 --indexPrefix customerc- --verbose'
   end
 
+  desc 'Generate and import lots more indexes'
+  task :generate_lots do
+    system 'makelogs -c 15000 -d "0,-12" -localhost:9200 --indexPrefix customera- --verbose'
+    system 'makelogs -c 15000 -d "0,-12" -localhost:9200 --indexPrefix customerb- --verbose'
+    system 'makelogs -c 15000 -d "0,-12" -localhost:9200 --indexPrefix customerc- --verbose'
+  end
+
   desc 'Purge indexes'
   task :purge do
     system "curl -XDELETE 'http://localhost:9200/customera-*/'"
