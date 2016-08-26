@@ -12,7 +12,7 @@ Clone the repository
 
     git clone git@git.kumina.nl:buckler/vagrant-buckler.git
 
-Install the necessary modules via [librarian-puppet](https://github.com/rodjek/librarian-puppet)
+Install the necessary modules via [librarian-puppet](https://github.com/voxpupuli/librarian-puppet)
 
     cd vagrant-buckler
     librarian-puppet install --path=puppet/modules/
