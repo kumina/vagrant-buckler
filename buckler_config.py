@@ -1,10 +1,15 @@
-CONFIG = { 'customera': {'password':'secreta',
+import crypt
+
+def hash_passwd(s):
+    return crypt.crypt(s, '$1$xyz')
+
+CONFIG = { 'customera': {'password': hash_passwd('secreta'),
                    'indexes': ('customera-*',)},
-           'customerb': {'password': 'secretb',
+           'customerb': {'password': hash_passwd('secretb'),
                     'indexes': ('customerb-*', )},
-           'customerc': {'password': 'secretc',
+           'customerc': {'password': hash_passwd('secretc'),
                     'indexes': ('customerc-*', )},
-           'kumina': {'password': 'secretk',
+           'kumina': {'password': hash_passwd('secretk'),
                          'indexes':('customera-*', 'customerb-*', 'customerc-*')},
            'superuser': {'password': 'geheim',
                          'indexes':('customera-*', 'customerb-*', 'customerc-*')}
