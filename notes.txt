@@ -42,16 +42,11 @@
 
 ## Buckler build
 
-You can now setup the Buckler development environment. Note: you will be asked for your credentials.
+You can now setup the Buckler development environment.
 
     mkdir src && cd src/
-    git clone https://git.kumina.nl/buckler/buckler-project.git
+    git clone https://github.com/kumina/Buckler-project.git buckler-project
     virtualenv --system-site-packages buckler-project
-
-Because you have no access to your ssh keys from this environment we need to change the connection method
-from git to https.
-
-    sed -i 's/git@git.kumina.nl:/https:\/\/git.kumina.nl\//' buckler-project/buildout.cfg
 
 Now install zc.buildout and run buildout. Note: you will be asked for your credentials.
 

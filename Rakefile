@@ -74,9 +74,8 @@ namespace :buckler do
 
   desc 'Build buckler'
   task :build do
-    system "git clone https://git.kumina.nl/buckler/buckler-project.git src/buckler-project"
+    system "git clone https://github.com/kumina/Buckler-project.git src/buckler-project"
     system "virtualenv --system-site-packages src/buckler-project/"
-    system "sed -i 's\/git@git.kumina.nl:\/https:\\/\\/git.kumina.nl\\/\/' src/buckler-project/buildout.cfg"
     system "src/buckler-project/bin/pip install zc.buildout && src/buckler-project/bin/buildout -c src/buckler-project/development.cfg"
     system "cp /vagrant/buckler_config.py src/buckler-project/Buckler/settings/config.py"
   end

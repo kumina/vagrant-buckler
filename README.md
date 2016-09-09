@@ -10,7 +10,7 @@ Installation
 
 Clone the repository 
 
-    git clone git@git.kumina.nl:buckler/vagrant-buckler.git
+    git clone https://github.com/kumina/vagrant-buckler.git
 
 Install the necessary modules via [librarian-puppet](https://github.com/voxpupuli/librarian-puppet)
 
