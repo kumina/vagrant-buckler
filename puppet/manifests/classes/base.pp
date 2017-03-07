@@ -34,7 +34,8 @@ class base {
   # Array of software packages that need to be installed
   $pkgs_allow = [ 'sysstat',
                     'atop',
-                    'curl',
+                    'python-dev',
+                    'python3-dev',
                     'htop',
                     'multitail',
                     'ngrep',

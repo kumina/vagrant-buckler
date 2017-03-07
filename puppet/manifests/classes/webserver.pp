@@ -28,7 +28,7 @@ class webserver {
 
 ## Elasticdump
 
-  # Install NodeJS and MPM for elasticdump.
+  # Install NodeJS and NPM for elasticdump.
   class { '::nodejs':
     manage_package_repo       => false,
     nodejs_dev_package_ensure => 'present',
@@ -44,12 +44,12 @@ class webserver {
   package { 'elasticdump':
     ensure   => 'present',
     provider => 'npm',
-    require  => [ Class['::nodejs'], File['/usr/bin/node'], ]
+    require  => [ Class['::nodejs'], File['/usr/bin/node'], Package['makelogs'] ]
   }
 
   # Install makelogs
   package { 'makelogs':
-    ensure   => 'present',
+    ensure   => '2.0.0',
     provider => 'npm',
     require  => [ Class['::nodejs'], File['/usr/bin/node'], ]
   }

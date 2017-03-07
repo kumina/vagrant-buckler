@@ -20,16 +20,16 @@ namespace :indexes do
 
   desc 'Generate and import indexes'
   task :generate do
-    system 'makelogs -c 1500 -d "0,-12" -localhost:9200 --indexPrefix customera- --verbose'
-    system 'makelogs -c 1500 -d "0,-12" -localhost:9200 --indexPrefix customerb- --verbose'
-    system 'makelogs -c 1500 -d "0,-12" -localhost:9200 --indexPrefix customerc- --verbose'
+    system 'makelogs -c 1500 -localhost:9200 --indexPrefix customera- --verbose'
+    system 'makelogs -c 1500 -localhost:9200 --indexPrefix customerb- --verbose'
+    system 'makelogs -c 1500 -localhost:9200 --indexPrefix customerc- --verbose'
   end
 
   desc 'Generate and import lots more indexes'
   task :generate_lots do
-    system 'makelogs -c 15000 -d "0,-12" -localhost:9200 --indexPrefix customera- --verbose'
-    system 'makelogs -c 15000 -d "0,-12" -localhost:9200 --indexPrefix customerb- --verbose'
-    system 'makelogs -c 15000 -d "0,-12" -localhost:9200 --indexPrefix customerc- --verbose'
+    system 'makelogs -c 15000 -localhost:9200 --indexPrefix customera- --verbose'
+    system 'makelogs -c 15000 -localhost:9200 --indexPrefix customerb- --verbose'
+    system 'makelogs -c 15000 -localhost:9200 --indexPrefix customerc- --verbose'
   end
 
   desc 'Purge indexes'
@@ -74,9 +74,9 @@ namespace :buckler do
 
   desc 'Build buckler'
   task :build do
-    system "git clone https://github.com/kumina/Buckler-project.git src/buckler-project"
-    system "virtualenv --system-site-packages src/buckler-project/"
-    system "src/buckler-project/bin/pip install zc.buildout && src/buckler-project/bin/buildout -c src/buckler-project/development.cfg"
+    system "git clone https://git.kumina.nl/buckler/buckler-project.git src/buckler-project"
+    system "virtualenv --no-site-packages src/buckler-project/"
+    system "src/buckler-project/bin/pip install zc.buildout && src/buckler-project/bin/buildout -n -c src/buckler-project/development.cfg"
     system "cp /vagrant/buckler_config.py src/buckler-project/Buckler/settings/config.py"
   end
 

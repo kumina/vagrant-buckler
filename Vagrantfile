@@ -11,12 +11,23 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   # Set box
-  config.vm.box = "debian-8.2.0-64bit-vbox-4.3.18-docker"
-  config.vm.box_url = "http://vagrant.kumina.nl/boxes/debian-8.2.0-64bit-vbox-4.3.18-docker.box"
+  config.vm.provider "libvirt" do |v, override|
+    override.vm.box = "debian-8.7.1-64bit-libvirt-4.3.18-docker"
+    #config.vm.box_url = "http://vagrant.kumina.nl/boxes/debian-8.3.0-64bit-backports-libvirt.box"
+  end
+
+  config.vm.provider "virtualbox" do |v, override|
+    override.vm.box = "debian-8.2.0-64bit-vbox-4.3.18-docker"
+    override.vm.box_url = "http://vagrant.kumina.nl/boxes/debian-8.2.0-64bit-vbox-4.3.18-docker.box"
+  end
 
   # Set box memory to 1024
   config.vm.provider :virtualbox do |vb|
     vb.customize ["modifyvm", :id, "--memory", "1024"]
+  end
+
+  config.vm.provider :libvirt do |lv|
+    lv.memory = 1024
   end
 
   # Always run apt-get update
