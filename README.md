@@ -3,7 +3,7 @@ Vagrant: Buckler
 
 Description
 -----------
-This is an vagrant environment to test Buckler
+This is an vagrant environment to test Buckler. It should support Virtualbox and libvirt. 
 
 Installation
 ------------
